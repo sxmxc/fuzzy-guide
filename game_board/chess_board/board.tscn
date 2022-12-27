@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwylfm45iycpr"]
+
+[ext_resource type="Script" path="res://game_board/chess_board/board.gd" id="1_1lbmp"]
+[ext_resource type="Texture2D" uid="uid://casjstlkoweji" path="res://assets/Chess_Board.svg" id="2_el1b5"]
+
+[node name="Board" type="Node2D"]
+script = ExtResource("1_1lbmp")
+
+[node name="BoardSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_el1b5")
+centered = false
+
+[node name="BoardTiles" type="Node2D" parent="."]

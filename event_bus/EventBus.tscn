@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxwkr8l4pgnec"]
+
+[ext_resource type="Script" path="res://event_bus/EventBus.gd" id="1_iqvbq"]
+[ext_resource type="PackedScene" uid="uid://qknucoa0lijr" path="res://player/PlayerEvents.tscn" id="2_vac11"]
+[ext_resource type="PackedScene" uid="uid://bkpngv4q24tvr" path="res://game_board/GameBoardEvents.tscn" id="3_8nnu4"]
+
+[node name="EventBus" type="Node2D"]
+script = ExtResource("1_iqvbq")
+
+[node name="PlayerEvents" parent="." instance=ExtResource("2_vac11")]
+
+[node name="GameBoardEvents" parent="." instance=ExtResource("3_8nnu4")]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://crutjd23i8ssx"]
+
+[ext_resource type="Texture2D" uid="uid://cakxwwy85du4h" path="res://assets/UuF4O5K.jpg" id="1_8q8so"]
+[ext_resource type="Script" path="res://cards/card_data.gd" id="2_5xh8w"]
+[ext_resource type="Texture2D" uid="uid://bov87g2pwawl6" path="res://assets/chess-pawn.svg" id="3_3edyt"]
+
+[resource]
+script = ExtResource("2_5xh8w")
+card_name = "Pawn0"
+card_id = "000"
+card_ability_text = "PromotableCan Capture 1 square vertically forward. Can Move 2 squares vertically forward initially, and 1 square vertically there after"
+card_flavor_text = "Not much is known"
+card_image = ExtResource("1_8q8so")
+unit_image = ExtResource("3_3edyt")
+card_value = null
+card_type = 0
+card_target_type = 0

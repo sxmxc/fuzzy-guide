@@ -1,0 +1,144 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfbb0k87u1bpo"]
+
+[ext_resource type="Script" path="res://dev/debug.gd" id="1_2b5wu"]
+[ext_resource type="Script" path="res://dev/CardDBPanel.gd" id="1_vvn80"]
+[ext_resource type="Script" path="res://dev/HandDebugPanel.gd" id="3_ictkf"]
+
+[node name="debug" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2b5wu")
+
+[node name="CardDBPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 784.0
+offset_top = 4.0
+offset_right = 1151.0
+offset_bottom = 190.0
+script = ExtResource("1_vvn80")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardDBPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CardDBPanel/VBoxContainer"]
+layout_mode = 2
+text = "Debug CardDB"
+horizontal_alignment = 1
+
+[node name="PanelHBox" type="HBoxContainer" parent="CardDBPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="InputVBox" type="VBoxContainer" parent="CardDBPanel/VBoxContainer/PanelHBox"]
+layout_mode = 2
+
+[node name="IDInput" type="TextEdit" parent="CardDBPanel/VBoxContainer/PanelHBox/InputVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+placeholder_text = "Card ID"
+
+[node name="LookupButton" type="Button" parent="CardDBPanel/VBoxContainer/PanelHBox/InputVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lookup"
+
+[node name="AddButton" type="Button" parent="CardDBPanel/VBoxContainer/PanelHBox/InputVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add to collection"
+
+[node name="OutputVBox" type="VBoxContainer" parent="CardDBPanel/VBoxContainer/PanelHBox"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardDBPanel/VBoxContainer/PanelHBox/OutputVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CardDBPanel/VBoxContainer/PanelHBox/OutputVBox/HBoxContainer"]
+layout_mode = 2
+text = "Card Name:"
+
+[node name="CardNameValue" type="Label" parent="CardDBPanel/VBoxContainer/PanelHBox/OutputVBox/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "xxxx"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CardDBPanel/VBoxContainer/PanelHBox/OutputVBox"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CardDBPanel/VBoxContainer/PanelHBox/OutputVBox/HBoxContainer2"]
+layout_mode = 2
+text = "Card Type:"
+
+[node name="CardTypeValue" type="Label" parent="CardDBPanel/VBoxContainer/PanelHBox/OutputVBox/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "xxxx"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CardDBPanel/VBoxContainer/PanelHBox/OutputVBox"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CardDBPanel/VBoxContainer/PanelHBox/OutputVBox/HBoxContainer3"]
+layout_mode = 2
+text = "Card Target:"
+
+[node name="CardTargetValue" type="Label" parent="CardDBPanel/VBoxContainer/PanelHBox/OutputVBox/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "xxxx"
+
+[node name="ErrorLabel" type="Label" parent="CardDBPanel/VBoxContainer/PanelHBox/OutputVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Error"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HandDebugPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 945.0
+offset_top = 387.0
+offset_right = 1141.0
+offset_bottom = 595.0
+script = ExtResource("3_ictkf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HandDebugPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HandDebugPanel/VBoxContainer"]
+layout_mode = 2
+text = "Debug Hand"
+horizontal_alignment = 1
+
+[node name="RedrawHandButton" type="Button" parent="HandDebugPanel/VBoxContainer"]
+layout_mode = 2
+text = "Redraw Hand"
+
+[node name="DiscardHandButton" type="Button" parent="HandDebugPanel/VBoxContainer"]
+layout_mode = 2
+text = "Discard Hand"
+
+[node name="DrawCardButton" type="Button" parent="HandDebugPanel/VBoxContainer"]
+layout_mode = 2
+text = "Draw Card"
+
+[connection signal="pressed" from="CardDBPanel/VBoxContainer/PanelHBox/InputVBox/LookupButton" to="CardDBPanel" method="_on_lookup_button_pressed"]
+[connection signal="pressed" from="CardDBPanel/VBoxContainer/PanelHBox/InputVBox/AddButton" to="CardDBPanel" method="_on_add_button_pressed"]
+[connection signal="pressed" from="HandDebugPanel/VBoxContainer/RedrawHandButton" to="HandDebugPanel" method="_on_redraw_hand_button_pressed"]
+[connection signal="pressed" from="HandDebugPanel/VBoxContainer/DiscardHandButton" to="HandDebugPanel" method="_on_discard_hand_button_pressed"]
+[connection signal="pressed" from="HandDebugPanel/VBoxContainer/DrawCardButton" to="HandDebugPanel" method="_on_draw_card_button_pressed"]

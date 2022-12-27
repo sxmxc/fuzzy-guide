@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkpngv4q24tvr"]
+
+[ext_resource type="Script" path="res://game_board/GameBoardEvents.gd" id="1_glnij"]
+
+[node name="GameBoardEvents" type="Node2D"]
+script = ExtResource("1_glnij")

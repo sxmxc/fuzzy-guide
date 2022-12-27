@@ -1,0 +1,330 @@
+[gd_scene load_steps=10 format=3 uid="uid://d3bstn2d3ft21"]
+
+[ext_resource type="Script" path="res://player/ui/CardCollectionMenu.gd" id="1_0llds"]
+[ext_resource type="Script" path="res://player/ui/player_menu.gd" id="1_1vs7c"]
+[ext_resource type="Theme" uid="uid://cpifmod4rxmyn" path="res://default.tres" id="1_u8lvv"]
+[ext_resource type="Texture2D" uid="uid://c8xv2q306nnbs" path="res://cards/6390514392af27d969fc04ed601af9066a49366e_hq.jpg" id="1_wk5s7"]
+[ext_resource type="Script" path="res://player/ui/PlayerInfo.gd" id="3_rodpw"]
+[ext_resource type="Script" path="res://player/ui/DeckCollectionMenu.gd" id="4_n73xl"]
+[ext_resource type="PackedScene" uid="uid://cb2wcdmwyqjuy" path="res://world/chars/CharacterPlayer.tscn" id="4_w1aw3"]
+[ext_resource type="Script" path="res://player/ui/DeckNameDialog.gd" id="5_toewi"]
+[ext_resource type="Script" path="res://player/ui/DeckEditDialog.gd" id="8_tc0se"]
+
+[node name="player_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u8lvv")
+script = ExtResource("1_1vs7c")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuContainer" type="TabContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="PlayerInfo" type="MarginContainer" parent="MenuContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+script = ExtResource("3_rodpw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/PlayerInfo"]
+offset_right = 1280.0
+offset_bottom = 688.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/PlayerInfo/HBoxContainer"]
+offset_right = 194.0
+offset_bottom = 688.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/PlayerInfo/HBoxContainer/VBoxContainer"]
+offset_right = 194.0
+offset_bottom = 27.0
+
+[node name="Label" type="Label" parent="MenuContainer/PlayerInfo/HBoxContainer/VBoxContainer/HBoxContainer"]
+offset_right = 150.0
+offset_bottom = 27.0
+text = "Player current deck:"
+
+[node name="CurrentDeckLabel" type="Label" parent="MenuContainer/PlayerInfo/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+offset_left = 154.0
+offset_right = 194.0
+offset_bottom = 27.0
+text = "xxxxx"
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuContainer/PlayerInfo/HBoxContainer"]
+offset_left = 198.0
+offset_right = 1280.0
+offset_bottom = 688.0
+size_flags_horizontal = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MenuContainer/PlayerInfo/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(150, 150)
+offset_left = 466.0
+offset_top = 269.0
+offset_right = 616.0
+offset_bottom = 419.0
+
+[node name="SubViewport" type="SubViewport" parent="MenuContainer/PlayerInfo/HBoxContainer/CenterContainer/SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+gui_disable_input = true
+size = Vector2i(150, 150)
+
+[node name="CharacterPlayer" parent="MenuContainer/PlayerInfo/HBoxContainer/CenterContainer/SubViewportContainer/SubViewport" instance=ExtResource("4_w1aw3")]
+
+[node name="Camera2D" type="Camera2D" parent="MenuContainer/PlayerInfo/HBoxContainer/CenterContainer/SubViewportContainer/SubViewport"]
+current = true
+zoom = Vector2(7, 7)
+
+[node name="CardCollectionMenu" type="MarginContainer" parent="MenuContainer"]
+visible = false
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("1_0llds")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/CardCollectionMenu"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 181.0
+offset_bottom = 81.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/CardCollectionMenu/HBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer"]
+text = "Collection"
+
+[node name="CollectionItemList" type="ItemList" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+auto_height = true
+item_count = 3
+item_0/text = "Some Card"
+item_1/text = "Some Other Card"
+item_2/text = "Another Card"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MenuContainer/CardCollectionMenu/HBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2"]
+text = "Details"
+
+[node name="Panel" type="Panel" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer"]
+
+[node name="Label" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer"]
+text = "Card ID:"
+
+[node name="CardIDValue" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer"]
+text = "Collected:"
+horizontal_alignment = 2
+
+[node name="CardCount" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer"]
+
+[node name="Label" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer2"]
+text = "Card Name:"
+
+[node name="CardNameValue" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer"]
+
+[node name="Label" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer3"]
+text = "Card Type:"
+
+[node name="CardTypeValue" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer"]
+
+[node name="Label" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer4"]
+text = "Card Target:"
+
+[node name="CardTargetValue" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+
+[node name="CardImage" type="TextureRect" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 250)
+size_flags_vertical = 3
+texture = ExtResource("1_wk5s7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer2/Panel/VBoxContainer"]
+text = "Card Image"
+horizontal_alignment = 1
+
+[node name="DeckCollectionMenu" type="MarginContainer" parent="MenuContainer"]
+visible = false
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("4_n73xl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/DeckCollectionMenu"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 466.0
+offset_bottom = 117.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/DeckCollectionMenu/HBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer"]
+text = "Decks"
+
+[node name="DeckItemList" type="ItemList" parent="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+fixed_icon_size = Vector2i(20, 20)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer"]
+
+[node name="NewDeckButton" type="Button" parent="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+text = "New Deck"
+
+[node name="EquipDeckButton" type="Button" parent="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+text = "Equip Deck"
+
+[node name="EditDeckButton" type="Button" parent="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+disabled = true
+text = "Edit Deck"
+
+[node name="DeleteDeckButton" type="Button" parent="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+disabled = true
+text = "Delete Deck"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MenuContainer/DeckCollectionMenu/HBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer2"]
+text = "Details"
+
+[node name="DeckContentList" type="ItemList" parent="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+auto_height = true
+
+[node name="DeckNameDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "New Deck"
+ok_button_text = "Create"
+script = ExtResource("5_toewi")
+
+[node name="TextEdit" type="TextEdit" parent="DeckNameDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 51.0
+placeholder_text = "Deck Name"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="DeckEditDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "Edit Deck"
+size = Vector2i(700, 500)
+ok_button_text = "Save"
+script = ExtResource("8_tc0se")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeckEditDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 692.0
+offset_bottom = 451.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeckEditDialog/HBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="DeckEditDialog/HBoxContainer/VBoxContainer"]
+text = "Available"
+
+[node name="CurrentCollectionList" type="ItemList" parent="DeckEditDialog/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+select_mode = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="DeckEditDialog/HBoxContainer"]
+alignment = 1
+
+[node name="AddToDeckButton" type="Button" parent="DeckEditDialog/HBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+text = "Add>>"
+
+[node name="RemoveFromDeckButton" type="Button" parent="DeckEditDialog/HBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+text = "<<Remove"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="DeckEditDialog/HBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="DeckEditDialog/HBoxContainer/VBoxContainer2"]
+text = "Deck"
+
+[node name="CurrentDeckList" type="ItemList" parent="DeckEditDialog/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+select_mode = 1
+
+[connection signal="item_selected" from="MenuContainer/CardCollectionMenu/HBoxContainer/VBoxContainer/CollectionItemList" to="MenuContainer/CardCollectionMenu" method="_on_collection_item_list_item_selected"]
+[connection signal="empty_clicked" from="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer/DeckItemList" to="MenuContainer/DeckCollectionMenu" method="_on_deck_item_list_empty_clicked"]
+[connection signal="item_selected" from="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer/DeckItemList" to="MenuContainer/DeckCollectionMenu" method="_on_deck_item_list_item_selected"]
+[connection signal="pressed" from="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer/HBoxContainer/NewDeckButton" to="MenuContainer/DeckCollectionMenu" method="_on_new_deck_button_pressed"]
+[connection signal="pressed" from="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer/HBoxContainer/EquipDeckButton" to="MenuContainer/DeckCollectionMenu" method="_on_equip_deck_button_pressed"]
+[connection signal="pressed" from="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer/HBoxContainer/EditDeckButton" to="MenuContainer/DeckCollectionMenu" method="_on_edit_deck_button_pressed"]
+[connection signal="pressed" from="MenuContainer/DeckCollectionMenu/HBoxContainer/VBoxContainer/HBoxContainer/DeleteDeckButton" to="MenuContainer/DeckCollectionMenu" method="_on_delete_deck_button_pressed"]
+[connection signal="confirmed" from="DeckNameDialog" to="DeckNameDialog" method="_on_confirmed"]
+[connection signal="name_confirmed" from="DeckNameDialog" to="MenuContainer/DeckCollectionMenu" method="_on_deck_name_dialog_name_confirmed"]
+[connection signal="text_changed" from="DeckNameDialog/TextEdit" to="DeckNameDialog" method="_on_text_edit_text_changed"]
+[connection signal="about_to_popup" from="DeckEditDialog" to="DeckEditDialog" method="_on_about_to_popup"]
+[connection signal="confirmed" from="DeckEditDialog" to="MenuContainer/DeckCollectionMenu" method="_on_deck_edit_dialog_confirmed"]
+[connection signal="pressed" from="DeckEditDialog/HBoxContainer/VBoxContainer3/AddToDeckButton" to="DeckEditDialog" method="_on_add_to_deck_button_pressed"]
+[connection signal="pressed" from="DeckEditDialog/HBoxContainer/VBoxContainer3/RemoveFromDeckButton" to="DeckEditDialog" method="_on_remove_from_deck_button_pressed"]

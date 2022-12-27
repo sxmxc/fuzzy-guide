@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dughmkepehs7f"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_5nq5k"]
+[ext_resource type="PackedScene" uid="uid://d3bstn2d3ft21" path="res://player/ui/player_menu.tscn" id="2_gdf4m"]
+[ext_resource type="PackedScene" uid="uid://cb2wcdmwyqjuy" path="res://world/chars/CharacterPlayer.tscn" id="2_hle34"]
+
+[node name="Player" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_5nq5k")
+
+[node name="CharacterPlayer" parent="." instance=ExtResource("2_hle34")]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 649.0
+mouse_filter = 2
+
+[node name="player_menu" parent="UI" instance=ExtResource("2_gdf4m")]
+visible = false
+mouse_filter = 1

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://6vb46gyyd3jd"]
+
+[ext_resource type="Script" path="res://units/unit.gd" id="1_rkkm2"]
+[ext_resource type="Texture2D" uid="uid://bov87g2pwawl6" path="res://assets/chess-pawn.svg" id="2_dkknk"]
+[ext_resource type="Shader" path="res://cards/card_outline.gdshader" id="2_fujfg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8wjv"]
+shader = ExtResource("2_fujfg")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 1
+shader_parameter/inside = null
+shader_parameter/add_margins = true
+
+[node name="Unit" type="Node2D"]
+script = ExtResource("1_rkkm2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_r8wjv")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_dkknk")
+centered = false
+offset = Vector2(0, -60)

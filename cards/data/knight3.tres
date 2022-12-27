@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://6dvgv3eslnmv"]
+
+[ext_resource type="Script" path="res://cards/card_data.gd" id="1_67a6q"]
+[ext_resource type="Texture2D" uid="uid://cfboi00qw5v3m" path="res://cards/35c3a526e4a6d893ea4f81bf609e5a34.png" id="1_pd52e"]
+[ext_resource type="Texture2D" uid="uid://c7qdjso2yepmc" path="res://assets/chess-knight.svg" id="3_3n03c"]
+
+[resource]
+script = ExtResource("1_67a6q")
+card_name = "Knight3"
+card_id = "003"
+card_ability_text = "Can move total 3 squares. Either 2 horizontally and 1 vertically, or 2 vertically and 1 horizontally. Can move over other units."
+card_flavor_text = "Not much is known"
+card_image = ExtResource("1_pd52e")
+unit_image = ExtResource("3_3n03c")
+card_value = null
+card_type = 0
+card_target_type = 3

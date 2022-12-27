@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://db5rrafvkqs1i"]
+
+[ext_resource type="Texture2D" uid="uid://bp3w7lje0d3o1" path="res://cards/Black_Rook_full.webp" id="1_6c8uf"]
+[ext_resource type="Script" path="res://cards/card_data.gd" id="1_8j0mq"]
+[ext_resource type="Texture2D" uid="uid://cbds7tqn0bnvv" path="res://assets/chess-rook.svg" id="3_6j3ak"]
+
+[resource]
+script = ExtResource("1_8j0mq")
+card_name = "Rook1"
+card_id = "001"
+card_ability_text = "Can move any number squares in 1 direction horizontally"
+card_flavor_text = "Not much is known"
+card_image = ExtResource("1_6c8uf")
+unit_image = ExtResource("3_6j3ak")
+card_value = null
+card_type = 0
+card_target_type = 1

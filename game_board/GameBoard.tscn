@@ -1,0 +1,140 @@
+[gd_scene load_steps=23 format=3 uid="uid://i3geoe2byvlb"]
+
+[ext_resource type="Script" path="res://game_board/GameBoard.gd" id="1_n73tf"]
+[ext_resource type="PackedScene" uid="uid://dwylfm45iycpr" path="res://game_board/chess_board/board.tscn" id="2_lr8j4"]
+[ext_resource type="Script" path="res://game_board/fsm/StateMachine.gd" id="2_sge23"]
+[ext_resource type="Script" path="res://game_board/hand/PlayerHand.gd" id="3_2cgno"]
+[ext_resource type="Script" path="res://game_board/fsm/states/PreGameState.gd" id="3_21v2v"]
+[ext_resource type="PackedScene" uid="uid://dughmkepehs7f" path="res://player/player.tscn" id="3_r41uw"]
+[ext_resource type="Script" path="res://game_board/library/PlayerLibrary.gd" id="4_qisnk"]
+[ext_resource type="Script" path="res://game_board/fsm/states/DrawState.gd" id="4_rx2b8"]
+[ext_resource type="Script" path="res://game_board/graveyard/PlayerGraveyard.gd" id="5_afi00"]
+[ext_resource type="Script" path="res://game_board/hand/OpponentHand.gd" id="6_u3nic"]
+[ext_resource type="Script" path="res://game_board/library/OpponentLibrary.gd" id="7_hbskh"]
+[ext_resource type="Script" path="res://game_board/graveyard/OpponentGraveyard.gd" id="8_4rp0t"]
+[ext_resource type="Script" path="res://game_board/fsm/states/MainState.gd" id="12_5dlof"]
+[ext_resource type="Script" path="res://game_board/fsm/states/MoveState.gd" id="13_qtpxt"]
+[ext_resource type="Script" path="res://game_board/fsm/states/MainState2.gd" id="14_1rrdl"]
+[ext_resource type="Script" path="res://game_board/fsm/states/EndState.gd" id="15_i5qy4"]
+[ext_resource type="PackedScene" uid="uid://dfbb0k87u1bpo" path="res://dev/debug.tscn" id="17_hlseb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvff8"]
+size = Vector2(397, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wip4n"]
+size = Vector2(140, 205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvoft"]
+size = Vector2(405, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4t5u1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syilv"]
+
+[node name="GameBoard" type="Node2D"]
+script = ExtResource("1_n73tf")
+
+[node name="Board" parent="." instance=ExtResource("2_lr8j4")]
+position = Vector2(388, 106)
+
+[node name="PlayerHand" type="Area2D" parent="."]
+position = Vector2(589, 630)
+script = ExtResource("3_2cgno")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHand"]
+shape = SubResource("RectangleShape2D_tvff8")
+
+[node name="PlayerLibrary" type="Area2D" parent="."]
+position = Vector2(119, 460)
+script = ExtResource("4_qisnk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLibrary"]
+shape = SubResource("RectangleShape2D_wip4n")
+
+[node name="PlayerGraveyard" type="Area2D" parent="."]
+position = Vector2(278, 461)
+script = ExtResource("5_afi00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerGraveyard"]
+shape = SubResource("RectangleShape2D_wip4n")
+
+[node name="OpponentHand" type="Area2D" parent="."]
+position = Vector2(586, 19)
+script = ExtResource("6_u3nic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpponentHand"]
+shape = SubResource("RectangleShape2D_fvoft")
+
+[node name="OpponentLibrary" type="Area2D" parent="."]
+position = Vector2(196, 67)
+script = ExtResource("7_hbskh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpponentLibrary"]
+shape = SubResource("RectangleShape2D_4t5u1")
+
+[node name="OpponentGraveyard" type="Area2D" parent="."]
+position = Vector2(274, 69)
+script = ExtResource("8_4rp0t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpponentGraveyard"]
+shape = SubResource("RectangleShape2D_syilv")
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("2_sge23")
+
+[node name="PreGameState" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_21v2v")
+
+[node name="DrawState" type="Node2D" parent="StateMachine"]
+script = ExtResource("4_rx2b8")
+
+[node name="MainState" type="Node2D" parent="StateMachine"]
+script = ExtResource("12_5dlof")
+
+[node name="MoveState" type="Node2D" parent="StateMachine"]
+script = ExtResource("13_qtpxt")
+
+[node name="MainState2" type="Node2D" parent="StateMachine"]
+script = ExtResource("14_1rrdl")
+
+[node name="EndState" type="Node2D" parent="StateMachine"]
+script = ExtResource("15_i5qy4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 71.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GameStateLabel" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+offset_top = 4.0
+offset_right = 1153.0
+offset_bottom = 31.0
+text = "Turn Phase: Pre-Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopScreenButton" type="Button" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+offset_left = 551.0
+offset_top = 35.0
+offset_right = 602.0
+offset_bottom = 67.0
+size_flags_horizontal = 4
+mouse_filter = 1
+text = "Begin"
+
+[node name="Player" parent="." instance=ExtResource("3_r41uw")]
+position = Vector2(7, 11)
+
+[node name="debug" parent="." instance=ExtResource("17_hlseb")]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb2wcdmwyqjuy"]
+
+[ext_resource type="Texture2D" uid="uid://bhyp6djlkx23f" path="res://assets/SmallBurg_village_pack/assets/character/adult/body/idle/idle_caucasian_skintone.png" id="1_8wrqp"]
+[ext_resource type="Script" path="res://world/chars/CharacterPlayer.gd" id="1_h5at8"]
+[ext_resource type="Texture2D" uid="uid://bfx1agiyrnma0" path="res://assets/SmallBurg_village_pack/assets/character/adult/hairs/idle/spikey/idle_hairs_spikey_purple.png" id="2_u62gg"]
+[ext_resource type="Texture2D" uid="uid://m7j8dn3o8trs" path="res://assets/SmallBurg_village_pack/assets/character/adult/clothing/idle/top/idle_top_shirt_overhalls.png" id="3_w6rks"]
+[ext_resource type="Texture2D" uid="uid://baqb25ajgnwwr" path="res://assets/SmallBurg_village_pack/assets/character/adult/clothing/idle/bottom/idle_bottom_jeans.png" id="4_pu51l"]
+[ext_resource type="Texture2D" uid="uid://dumm61mwky6s2" path="res://assets/SmallBurg_village_pack/assets/character/adult/clothing/idle/shoes/idle_shoes_red.png" id="5_ettaj"]
+[ext_resource type="Texture2D" uid="uid://51vg24vwvrwl" path="res://assets/SmallBurg_village_pack/assets/character/adult/clothing/idle/acessories/idle_acessories_tie.png" id="6_it140"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ci5x2"]
+size = Vector2(11, 15)
+
+[node name="CharacterPlayer" type="CharacterBody2D"]
+texture_filter = 1
+motion_mode = 1
+script = ExtResource("1_h5at8")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_8wrqp")
+hframes = 2
+vframes = 4
+
+[node name="Hair" type="Sprite2D" parent="."]
+texture = ExtResource("2_u62gg")
+hframes = 2
+vframes = 4
+
+[node name="Top" type="Sprite2D" parent="."]
+texture = ExtResource("3_w6rks")
+hframes = 2
+vframes = 4
+
+[node name="Bottom" type="Sprite2D" parent="."]
+texture = ExtResource("4_pu51l")
+hframes = 2
+vframes = 4
+
+[node name="Shoes" type="Sprite2D" parent="."]
+texture = ExtResource("5_ettaj")
+
+[node name="Accessories" type="Sprite2D" parent="."]
+texture = ExtResource("6_it140")
+hframes = 2
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_ci5x2")

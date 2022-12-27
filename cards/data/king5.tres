@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bp7sahs4185ql"]
+
+[ext_resource type="Texture2D" uid="uid://cbs568jvyuriu" path="res://cards/Black_King_full.webp" id="1_6xirc"]
+[ext_resource type="Script" path="res://cards/card_data.gd" id="1_uskjh"]
+[ext_resource type="Texture2D" uid="uid://dm0myh8ftaj6p" path="res://assets/chess-king.svg" id="3_btrgr"]
+
+[resource]
+script = ExtResource("1_uskjh")
+card_name = "King5"
+card_id = "005"
+card_ability_text = "CastlingCan move 1 square in any direction. "
+card_flavor_text = "Not much is known"
+card_image = ExtResource("1_6xirc")
+unit_image = ExtResource("3_btrgr")
+card_value = null
+card_type = 0
+card_target_type = 4

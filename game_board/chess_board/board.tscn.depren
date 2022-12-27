@@ -1,0 +1,4 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://game_board/chess_board/board.gd" id="1_sgrhf"]
+[ext_resource type="Texture2D" uid="uid://casjstlkoweji" path="res://assets/Chess_Board.svg" id="2_el1b5"]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxsc5dwe81nb3"]
+
+[ext_resource type="Script" path="res://game_board/chess_board/board_tile.gd" id="1_lm2dc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y7ao5"]
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_31bhf"]
+
+[node name="BoardTile" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_lm2dc")
+
+[node name="TileDisplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LocationLabel" type="Label" parent="TileDisplay"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -21.0
+offset_right = 18.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "(0,0)"
+label_settings = SubResource("LabelSettings_y7ao5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RankFileLabel" type="Label" parent="TileDisplay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -22.0
+offset_right = 35.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "a1"
+label_settings = SubResource("LabelSettings_y7ao5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TileDisplay"]
+modulate = Color(0.313726, 1, 0.25098, 0.301961)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_31bhf")
+ignore_texture_size = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

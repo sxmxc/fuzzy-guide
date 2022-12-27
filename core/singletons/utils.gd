@@ -56,6 +56,22 @@ func load_packages(paths: Array) -> void:
 		pckmgr.set_path(paths)
 		pckmgr.load_packages()
 	else:
-		logger.warning("This project seems runs in editor, Hello developers!", MODULE_NAME)
-		logger.warning("Skipping load packages...", MODULE_NAME)
+		logger.warning("Running in editor. Skipping load packages...", MODULE_NAME)
 	pass
+
+func get_screen_center() -> Vector2:
+	return Vector2(float(DisplayServer.window_get_size().x)/2, float(DisplayServer.window_get_size().y)/2)
+
+func get_center(vector : Vector2) -> Vector2:
+	return Vector2(vector.x/2, vector.y/2)
+
+func array_dif(arr1 : Array, arr2 : Array) -> Array:
+	var only_in_arr1 = arr1
+	var items_to_check = arr2
+	while items_to_check:
+		for v in arr1.size() - 1 :
+			if items_to_check[0] == arr1[v]:
+				items_to_check.pop_front()
+				only_in_arr1.remove_at(v)
+				break
+	return only_in_arr1

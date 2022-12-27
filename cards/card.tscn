@@ -1,0 +1,236 @@
+[gd_scene load_steps=12 format=3 uid="uid://hbmmsj0g0c0i"]
+
+[ext_resource type="Script" path="res://cards/card.gd" id="1_57tch"]
+[ext_resource type="Texture2D" uid="uid://dfs3wlwfabpd" path="res://assets/cardback.png" id="2_1cym5"]
+[ext_resource type="Texture2D" uid="uid://bt8184b46exbo" path="res://assets/CardBackground.png" id="3_h1i8d"]
+[ext_resource type="Texture2D" uid="uid://cakxwwy85du4h" path="res://assets/UuF4O5K.jpg" id="4_y2ifc"]
+[ext_resource type="Texture2D" uid="uid://btcqcr23vexwq" path="res://assets/GemStone.png" id="5_er5q7"]
+[ext_resource type="Texture2D" uid="uid://d1mopglhldhau" path="res://assets/ScrollHeader.png" id="6_ylq8s"]
+[ext_resource type="Texture2D" uid="uid://byej6s8evbsl8" path="res://assets/ShieldAndSword.png" id="7_7cvhh"]
+[ext_resource type="Shader" path="res://cards/card_outline.gdshader" id="8_626wd"]
+[ext_resource type="Script" path="res://cards/Highlight.gd" id="9_3fkih"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ixl5s"]
+font_size = 12
+font_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oofhi"]
+shader = ExtResource("8_626wd")
+shader_parameter/color = Color(1, 0.258824, 0.258824, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[node name="Card" type="Control"]
+process_mode = 1
+layout_mode = 3
+anchor_left = 0.000868056
+anchor_right = 0.000868056
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 139.0
+offset_bottom = 205.0
+pivot_offset = Vector2(71, 102)
+script = ExtResource("1_57tch")
+front_facing = true
+
+[node name="CardBack" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.0218978
+anchor_top = 0.0197044
+anchor_right = 0.0218978
+anchor_bottom = 0.0197044
+offset_left = -3.00001
+offset_top = -4.0
+offset_right = 132.0
+offset_bottom = 200.0
+texture = ExtResource("2_1cym5")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CardFront" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 135.0
+offset_bottom = 204.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CardBackground" type="TextureRect" parent="CardFront"]
+offset_right = 135.0
+offset_bottom = 204.0
+texture = ExtResource("3_h1i8d")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CardImage" type="TextureRect" parent="CardFront"]
+anchors_preset = -1
+anchor_left = 0.0955882
+anchor_top = 0.0931373
+anchor_right = 0.917811
+anchor_bottom = 0.598088
+offset_right = -1.82224
+offset_bottom = -3.00992
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_y2ifc")
+ignore_texture_size = true
+metadata/_edit_use_anchors_ = true
+
+[node name="CardJewel" type="TextureRect" parent="CardFront"]
+anchors_preset = -1
+anchor_left = 0.785185
+anchor_top = 0.019802
+anchor_right = 0.977778
+anchor_bottom = 0.133663
+grow_horizontal = 0
+texture = ExtResource("5_er5q7")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CardFront/CardJewel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -13.5
+offset_right = 13.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardScrollHeader" type="TextureRect" parent="CardFront"]
+anchors_preset = -1
+anchor_left = 0.103704
+anchor_top = 0.381188
+anchor_right = 0.903704
+anchor_bottom = 0.826733
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ylq8s")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CardTargetTypeLabel" type="Label" parent="CardFront/CardScrollHeader"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.4
+offset_top = -8.44555
+offset_right = 43.6
+offset_bottom = 8.55445
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Card Target Type"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardSwordAndShield" type="TextureRect" parent="CardFront"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -33.0
+offset_right = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("7_7cvhh")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CardTypeLabel" type="Label" parent="CardFront"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.348148
+anchor_top = 0.648515
+anchor_right = 0.659259
+anchor_bottom = 0.712871
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
+text = "Card Type"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AbilityText" type="RichTextLabel" parent="CardFront"]
+anchors_preset = -1
+anchor_left = 0.118519
+anchor_top = 0.757426
+anchor_right = 0.874074
+anchor_bottom = 0.841584
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(51.8814, -56.5149)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 8
+scroll_active = false
+shortcut_keys_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="FlavorText" type="RichTextLabel" parent="CardFront"]
+anchors_preset = -1
+anchor_left = 0.133333
+anchor_top = 0.871287
+anchor_right = 0.888889
+anchor_bottom = 0.955446
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 7
+text = "Flava text/ability"
+scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="CardName" type="Label" parent="CardFront"]
+anchors_preset = -1
+anchor_left = 0.0948889
+anchor_top = 0.019802
+anchor_right = 0.583778
+anchor_bottom = 0.118812
+text = "Card Name"
+label_settings = SubResource("LabelSettings_ixl5s")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Highlight" type="TextureRect" parent="."]
+visible = false
+show_behind_parent = true
+material = SubResource("ShaderMaterial_oofhi")
+anchors_preset = -1
+anchor_left = 0.131387
+anchor_top = 0.147783
+anchor_right = 0.843978
+anchor_bottom = 0.848831
+offset_right = -53.625
+offset_bottom = -98.3127
+scale = Vector2(2.21875, 3.23438)
+texture = ExtResource("3_h1i8d")
+ignore_texture_size = true
+script = ExtResource("9_3fkih")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

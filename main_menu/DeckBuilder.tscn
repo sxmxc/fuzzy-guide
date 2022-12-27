@@ -1,0 +1,693 @@
+[gd_scene load_steps=14 format=3 uid="uid://det0jggdukiqp"]
+
+[ext_resource type="Script" path="res://main_menu/DeckBuilder.gd" id="1_dxd2g"]
+[ext_resource type="Script" path="res://main_menu/DraggableContainer.gd" id="2_htbw4"]
+[ext_resource type="PackedScene" uid="uid://r4tlwt0adm3u" path="res://main_menu/DraggableItem.tscn" id="3_fmxnj"]
+[ext_resource type="Script" path="res://main_menu/StarterDraggableContainer.gd" id="4_b6o0w"]
+[ext_resource type="Script" path="res://main_menu/CardDetailsContainer.gd" id="4_cxv2c"]
+[ext_resource type="Texture2D" uid="uid://c8xv2q306nnbs" path="res://cards/6390514392af27d969fc04ed601af9066a49366e_hq.jpg" id="5_gmcxp"]
+[ext_resource type="Texture2D" uid="uid://bov87g2pwawl6" path="res://assets/chess-pawn.svg" id="5_vesoc"]
+[ext_resource type="Script" path="res://main_menu/StarterList.gd" id="6_0d0yh"]
+[ext_resource type="Texture2D" uid="uid://cbds7tqn0bnvv" path="res://assets/chess-rook.svg" id="6_co8u7"]
+[ext_resource type="Texture2D" uid="uid://c7qdjso2yepmc" path="res://assets/chess-knight.svg" id="7_tr5g6"]
+[ext_resource type="Texture2D" uid="uid://b8aet6qtelijb" path="res://assets/chess-bishop.svg" id="8_plog0"]
+[ext_resource type="Texture2D" uid="uid://b4g8h0t4w07ts" path="res://assets/chess-queen.svg" id="9_ynr5f"]
+[ext_resource type="Texture2D" uid="uid://dm0myh8ftaj6p" path="res://assets/chess-king.svg" id="10_33uds"]
+
+[node name="DeckBuilder" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dxd2g")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Deck Name:"
+
+[node name="DeckNameInput" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+placeholder_text = "Deck Name"
+
+[node name="BuilderContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer"]
+layout_mode = 2
+text = "Collection"
+horizontal_alignment = 1
+
+[node name="CollectionPanel" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer" groups=["Droppable"]]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+script = ExtResource("2_htbw4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+horizontal_scroll_mode = 0
+
+[node name="CollectionList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="DraggableItem" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel/ScrollContainer/CollectionList" instance=ExtResource("3_fmxnj")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 0
+
+[node name="DraggableItem2" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel/ScrollContainer/CollectionList" instance=ExtResource("3_fmxnj")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 0
+id = 1
+
+[node name="DraggableItem3" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel/ScrollContainer/CollectionList" instance=ExtResource("3_fmxnj")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 0
+id = 2
+
+[node name="DraggableItem4" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel/ScrollContainer/CollectionList" instance=ExtResource("3_fmxnj")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 0
+id = 3
+
+[node name="DraggableItem5" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel/ScrollContainer/CollectionList" instance=ExtResource("3_fmxnj")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 0
+id = 4
+
+[node name="DraggableItem6" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel/ScrollContainer/CollectionList" instance=ExtResource("3_fmxnj")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 0
+id = 5
+
+[node name="DraggableItem7" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel/ScrollContainer/CollectionList" instance=ExtResource("3_fmxnj")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 0
+id = 6
+
+[node name="DraggableItem8" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel/ScrollContainer/CollectionList" instance=ExtResource("3_fmxnj")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 0
+id = 7
+
+[node name="DraggableItem9" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CollectionPanel/ScrollContainer/CollectionList" instance=ExtResource("3_fmxnj")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 0
+id = 8
+
+[node name="CardDetailsContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 10
+script = ExtResource("4_cxv2c")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Details"
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Card ID:"
+
+[node name="CardIDValue" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Card Name:"
+
+[node name="CardNameValue" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Card Type:"
+
+[node name="CardTypeValue" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Card Target:"
+
+[node name="CardTargetValue" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CardImage" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("5_gmcxp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="AbilityText" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer/CardDetailsContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer5/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Promotable
+Can Capture 1 square vertically forward. 
+Can Move 2 squares vertically forward initially, and 1 square vertically there after"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Deck"
+horizontal_alignment = 1
+
+[node name="DeckCountLabel" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(0/60)"
+horizontal_alignment = 1
+
+[node name="DeckContentPanel" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2" groups=["Droppable"]]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_htbw4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/DeckContentPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="DeckContentList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/DeckContentPanel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Starters"
+horizontal_alignment = 1
+
+[node name="StarterCountLabel" type="Label" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(0/16)"
+horizontal_alignment = 1
+
+[node name="StarterPanel" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StarterList" type="GridContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 8
+script = ExtResource("6_0d0yh")
+
+[node name="Pawn0" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn0/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_vesoc")
+ignore_texture_size = true
+
+[node name="Pawn1" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn1/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_vesoc")
+ignore_texture_size = true
+
+[node name="Pawn2" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn2/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_vesoc")
+ignore_texture_size = true
+
+[node name="Pawn3" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn3/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_vesoc")
+ignore_texture_size = true
+
+[node name="Pawn4" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn4/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_vesoc")
+ignore_texture_size = true
+
+[node name="Pawn5" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn5/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_vesoc")
+ignore_texture_size = true
+
+[node name="Pawn6" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn6/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_vesoc")
+ignore_texture_size = true
+
+[node name="Pawn7" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Pawn7/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_vesoc")
+ignore_texture_size = true
+
+[node name="Rook0" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Rook0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Rook0/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_co8u7")
+ignore_texture_size = true
+
+[node name="Knight0" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Knight0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Knight0/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("7_tr5g6")
+ignore_texture_size = true
+
+[node name="Bishop0" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Bishop0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Bishop0/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("8_plog0")
+ignore_texture_size = true
+
+[node name="Queen" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Queen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Queen/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("9_ynr5f")
+ignore_texture_size = true
+
+[node name="King" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/King"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/King/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("10_33uds")
+ignore_texture_size = true
+
+[node name="Bishop1" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Bishop1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StarterImage" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Bishop1/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("8_plog0")
+ignore_texture_size = true
+
+[node name="Knight1" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Knight1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Knight1/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("7_tr5g6")
+ignore_texture_size = true
+
+[node name="Rook1" type="Panel" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList" groups=["Droppable"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_b6o0w")
+starter_unit_type = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Rook1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BuilderContainer/VBoxContainer2/StarterPanel/StarterList/Rook1/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_co8u7")
+ignore_texture_size = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cancel"
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+size = Vector2i(372, 100)
+dialog_text = "Save current deck?"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

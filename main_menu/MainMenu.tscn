@@ -1,0 +1,222 @@
+[gd_scene load_steps=13 format=3 uid="uid://bfincqp3jdur3"]
+
+[ext_resource type="Script" path="res://main_menu/MainTabContainer.gd" id="1_6nows"]
+[ext_resource type="Script" path="res://main_menu/MainMenu.gd" id="1_r8wpf"]
+[ext_resource type="PackedScene" uid="uid://det0jggdukiqp" path="res://main_menu/DeckBuilder.tscn" id="2_47frh"]
+[ext_resource type="Texture2D" uid="uid://b8qsml2ej0qko" path="res://assets/cooltext425783786179171.png" id="2_dv4m7"]
+[ext_resource type="Texture2D" uid="uid://cqx1yo7mknkfa" path="res://assets/save.svg" id="2_f2vor"]
+[ext_resource type="Texture2D" uid="uid://cpf1yui85f83t" path="res://assets/settings-knobs.svg" id="3_efve6"]
+[ext_resource type="Texture2D" uid="uid://ba3k5k68jtjrs" path="res://assets/bookmark.svg" id="4_ab85i"]
+[ext_resource type="Texture2D" uid="uid://b8olvhlobu3xy" path="res://assets/card-burn.svg" id="5_e0wda"]
+[ext_resource type="Texture2D" uid="uid://dm0myh8ftaj6p" path="res://assets/chess-king.svg" id="6_rofr6"]
+[ext_resource type="Script" path="res://main_menu/DeckBuilderPanel.gd" id="9_475v3"]
+[ext_resource type="Script" path="res://main_menu/DeckList.gd" id="10_g4b6o"]
+[ext_resource type="PackedScene" uid="uid://bjkcjxoms5kh5" path="res://main_menu/character_creator.tscn" id="12_v5ofd"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r8wpf")
+
+[node name="MainTabContainer" type="TabContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tabs_visible = false
+script = ExtResource("1_6nows")
+
+[node name="Main" type="Panel" parent="MainTabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MainTabContainer/Main"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainTabContainer/Main/CenterContainer"]
+offset_left = 565.0
+offset_top = 272.0
+offset_right = 715.0
+offset_bottom = 448.0
+
+[node name="NewGameButton" type="Button" parent="MainTabContainer/Main/CenterContainer/VBoxContainer"]
+offset_right = 150.0
+offset_bottom = 32.0
+disabled = true
+text = "New Game"
+icon = ExtResource("2_f2vor")
+expand_icon = true
+
+[node name="SettingButton" type="Button" parent="MainTabContainer/Main/CenterContainer/VBoxContainer"]
+offset_top = 36.0
+offset_right = 150.0
+offset_bottom = 68.0
+text = "Settings
+"
+icon = ExtResource("3_efve6")
+expand_icon = true
+
+[node name="CardLibraryButton" type="Button" parent="MainTabContainer/Main/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+offset_top = 72.0
+offset_right = 150.0
+offset_bottom = 104.0
+text = "Card Library"
+icon = ExtResource("4_ab85i")
+expand_icon = true
+
+[node name="DeckBuilderButton" type="Button" parent="MainTabContainer/Main/CenterContainer/VBoxContainer"]
+offset_top = 108.0
+offset_right = 150.0
+offset_bottom = 140.0
+text = "Deck Builder"
+icon = ExtResource("5_e0wda")
+expand_icon = true
+
+[node name="DevButton" type="Button" parent="MainTabContainer/Main/CenterContainer/VBoxContainer"]
+offset_top = 144.0
+offset_right = 150.0
+offset_bottom = 176.0
+text = "Dev  Menu"
+icon = ExtResource("6_rofr6")
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="MainTabContainer/Main"]
+anchors_preset = -1
+anchor_left = 0.201389
+anchor_top = 0.128086
+anchor_right = 0.802083
+anchor_bottom = 0.316358
+grow_horizontal = 2
+texture = ExtResource("2_dv4m7")
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings" type="Panel" parent="MainTabContainer"]
+visible = false
+
+[node name="CardLibrary" type="Panel" parent="MainTabContainer"]
+visible = false
+
+[node name="DeckBuilder" type="Panel" parent="MainTabContainer"]
+visible = false
+script = ExtResource("9_475v3")
+
+[node name="TabContainer" type="TabContainer" parent="MainTabContainer/DeckBuilder"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tabs_visible = false
+
+[node name="DeckList" type="Control" parent="MainTabContainer/DeckBuilder/TabContainer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_g4b6o")
+
+[node name="CenterContainer" type="CenterContainer" parent="MainTabContainer/DeckBuilder/TabContainer/DeckList"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer"]
+offset_right = 194.0
+offset_bottom = 267.0
+
+[node name="Label" type="Label" parent="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer/VBoxContainer"]
+text = "Select deck or create new:"
+
+[node name="DeckList" type="ItemList" parent="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+auto_height = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer/VBoxContainer"]
+alignment = 1
+
+[node name="BackButton" type="Button" parent="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer/VBoxContainer/HBoxContainer"]
+text = "Back"
+
+[node name="DeckEditButton" type="Button" parent="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+text = "Edit"
+
+[node name="Button3" type="Button" parent="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer/VBoxContainer/HBoxContainer"]
+text = "New"
+
+[node name="DeckBuilder" parent="MainTabContainer/DeckBuilder/TabContainer" instance=ExtResource("2_47frh")]
+visible = false
+
+[node name="DevMenu" type="Panel" parent="MainTabContainer"]
+visible = false
+
+[node name="Label" type="Label" parent="MainTabContainer/DevMenu"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 225.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Development Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MainTabContainer/DevMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainTabContainer/DevMenu/CenterContainer"]
+offset_right = 134.0
+offset_bottom = 176.0
+
+[node name="DevSceneButton" type="Button" parent="MainTabContainer/DevMenu/CenterContainer/VBoxContainer"]
+text = "Dev Level"
+
+[node name="DevSandboxButton" type="Button" parent="MainTabContainer/DevMenu/CenterContainer/VBoxContainer"]
+text = "Dev Sandbox"
+
+[node name="DevWorldGenButton" type="Button" parent="MainTabContainer/DevMenu/CenterContainer/VBoxContainer"]
+text = "Dev World Gen"
+
+[node name="DevCharCreatorButton" type="Button" parent="MainTabContainer/DevMenu/CenterContainer/VBoxContainer"]
+text = "Dev Char Creator"
+
+[node name="DevBackButton" type="Button" parent="MainTabContainer/DevMenu/CenterContainer/VBoxContainer"]
+text = "Back to Main"
+
+[node name="CharacterCreator" parent="MainTabContainer" instance=ExtResource("12_v5ofd")]
+visible = false
+
+[connection signal="pressed" from="MainTabContainer/Main/CenterContainer/VBoxContainer/SettingButton" to="MainTabContainer" method="_on_setting_button_pressed"]
+[connection signal="pressed" from="MainTabContainer/Main/CenterContainer/VBoxContainer/CardLibraryButton" to="MainTabContainer" method="_on_card_library_button_pressed"]
+[connection signal="pressed" from="MainTabContainer/Main/CenterContainer/VBoxContainer/DeckBuilderButton" to="MainTabContainer" method="_on_deck_builder_button_pressed"]
+[connection signal="pressed" from="MainTabContainer/Main/CenterContainer/VBoxContainer/DevButton" to="MainTabContainer" method="_on_dev_button_pressed"]
+[connection signal="back_requested" from="MainTabContainer/DeckBuilder" to="MainTabContainer" method="_on_deck_builder_back_requested"]
+[connection signal="pressed" from="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer/VBoxContainer/HBoxContainer/BackButton" to="MainTabContainer/DeckBuilder" method="_on_back_button_pressed"]
+[connection signal="pressed" from="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer/VBoxContainer/HBoxContainer/DeckEditButton" to="MainTabContainer/DeckBuilder" method="_on_deck_edit_button_pressed"]
+[connection signal="pressed" from="MainTabContainer/DevMenu/CenterContainer/VBoxContainer/DevSceneButton" to="MainTabContainer" method="_on_dev_scene_button_pressed"]
+[connection signal="pressed" from="MainTabContainer/DevMenu/CenterContainer/VBoxContainer/DevSandboxButton" to="MainTabContainer" method="_on_dev_sandbox_button_pressed"]
+[connection signal="pressed" from="MainTabContainer/DevMenu/CenterContainer/VBoxContainer/DevWorldGenButton" to="MainTabContainer" method="_on_dev_world_gen_button_pressed"]
+[connection signal="pressed" from="MainTabContainer/DevMenu/CenterContainer/VBoxContainer/DevCharCreatorButton" to="MainTabContainer" method="_on_dev_char_creator_button_pressed"]
+[connection signal="pressed" from="MainTabContainer/DevMenu/CenterContainer/VBoxContainer/DevBackButton" to="MainTabContainer" method="_on_dev_back_button_pressed"]
+[connection signal="back_requested" from="MainTabContainer/CharacterCreator" to="MainTabContainer" method="_on_character_creator_back_requested"]

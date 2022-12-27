@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cpifmod4rxmyn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmw04"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 0.87451)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxFlat_bmw04")
