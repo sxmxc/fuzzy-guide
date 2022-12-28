@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq2auh2c6m2a1"
-path="res://.godot/imported/walk_clothing_shoes_red.png-2e61554046f10283df3e6d7ff9ea09c4.ctex"
+uid="uid://c6cgae70gtou8"
+path="res://.godot/imported/clockwise-rotation.svg-02501173516cfc41c48cff62f316de45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SmallBurg_village_pack/assets/character/adult/clothing/walk/shoes/walk_clothing_shoes_red.png"
-dest_files=["res://.godot/imported/walk_clothing_shoes_red.png-2e61554046f10283df3e6d7ff9ea09c4.ctex"]
+source_file="res://assets/clockwise-rotation.svg"
+dest_files=["res://.godot/imported/clockwise-rotation.svg-02501173516cfc41c48cff62f316de45.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

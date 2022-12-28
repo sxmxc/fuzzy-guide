@@ -135,7 +135,7 @@ func _on_tile_clicked(tile: BoardTile):
 func _on_game_state_changed(state: String):
 	current_game_phase = state
 
-func _process(delta):
+func _process(_delta):
 
 	#TODO name dis better and dont call here yo
 	get_node("%GameStateLabel").set_text("Turn phase: " + current_game_phase)

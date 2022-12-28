@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjkcjxoms5kh5"]
+[gd_scene load_steps=5 format=3 uid="uid://bjkcjxoms5kh5"]
 
 [ext_resource type="Script" path="res://main_menu/CharacterCreator.gd" id="1_t3xcp"]
 [ext_resource type="PackedScene" uid="uid://cb2wcdmwyqjuy" path="res://world/chars/CharacterPlayer.tscn" id="2_v8d3e"]
+[ext_resource type="Texture2D" uid="uid://c6cgae70gtou8" path="res://assets/clockwise-rotation.svg" id="3_bkfnu"]
+[ext_resource type="Texture2D" uid="uid://chrk7g8p5pucm" path="res://assets/anticlockwise-rotation.svg" id="4_ej8n1"]
 
 [node name="CharacterCreator" type="Panel"]
 anchors_preset = 15
@@ -33,49 +35,237 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="RandomButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Random"
 
-[node name="CharCreatorBackButton" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="CharCreatorBackButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Cancel"
 
-[node name="Button3" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Save"
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/CenterContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/MarginContainer/HBoxContainer/CenterContainer/SubViewportContainer"]
+[node name="SpriteView" type="SubViewport" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer2/SubViewportContainer"]
+unique_name_in_owner = true
 transparent_bg = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 gui_disable_input = true
+size = Vector2i(256, 256)
 render_target_update_mode = 4
 
-[node name="CharacterPlayer" parent="VBoxContainer/MarginContainer/HBoxContainer/CenterContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_v8d3e")]
+[node name="CharacterPlayer" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer2/SubViewportContainer/SpriteView" instance=ExtResource("2_v8d3e")]
 
-[node name="Camera2D" type="Camera2D" parent="VBoxContainer/MarginContainer/HBoxContainer/CenterContainer/SubViewportContainer/SubViewport"]
+[node name="Camera2D" type="Camera2D" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer2/SubViewportContainer/SpriteView"]
 current = true
 zoom = Vector2(10, 10)
 
-[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CharCreatorBackButton" to="." method="_on_char_creator_back_button_pressed"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Body"
+
+[node name="BodyRandomButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Random"
+
+[node name="BodyOptions" type="OptionButton" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "Option1"
+popup/item_0/id = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hair"
+
+[node name="HairRandomButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Random"
+
+[node name="HairOptions" type="OptionButton" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "Option1"
+popup/item_0/id = 0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Top
+"
+
+[node name="TopRandomButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Random"
+
+[node name="TopOptions" type="OptionButton" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "Option1"
+popup/item_0/id = 0
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bottoms
+"
+
+[node name="BottomRandomButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Random"
+
+[node name="BottomOptions" type="OptionButton" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "Option1"
+popup/item_0/id = 0
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shoes"
+
+[node name="ShoesRandomButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Random"
+
+[node name="ShoesOptions" type="OptionButton" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "Option1"
+popup/item_0/id = 0
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Accessory"
+
+[node name="AccessoryRandomButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Random"
+
+[node name="AccessoryOptions" type="OptionButton" parent="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer7"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "Option1"
+popup/item_0/id = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="CharViewRotateLeft" type="TextureButton" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture_normal = ExtResource("3_bkfnu")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CharViewAnimatedCheck" type="CheckBox" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Animated"
+
+[node name="CharViewRotateRight" type="TextureButton" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture_normal = ExtResource("4_ej8n1")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/RandomButton" to="." method="_on_random_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/CharCreatorBackButton" to="." method="_on_char_creator_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2/BodyRandomButton" to="." method="_on_body_random_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2/BodyOptions" to="." method="_on_body_options_item_selected"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer3/HairRandomButton" to="." method="_on_hair_random_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer3/HairOptions" to="." method="_on_hair_options_item_selected"]
+[connection signal="button_up" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer4/TopRandomButton" to="." method="_on_top_random_button_button_up"]
+[connection signal="item_selected" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer4/TopOptions" to="." method="_on_top_options_item_selected"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer5/BottomRandomButton" to="." method="_on_bottom_random_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer5/BottomOptions" to="." method="_on_bottom_options_item_selected"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer6/ShoesRandomButton" to="." method="_on_shoes_random_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer6/ShoesOptions" to="." method="_on_shoes_options_item_selected"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer7/AccessoryRandomButton" to="." method="_on_accessory_random_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer7/AccessoryOptions" to="." method="_on_accessory_options_item_selected"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CharViewRotateLeft" to="." method="_on_char_view_rotate_left_pressed"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CharViewAnimatedCheck" to="." method="_on_char_view_animated_check_toggled"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CharViewRotateRight" to="." method="_on_char_view_rotate_right_pressed"]

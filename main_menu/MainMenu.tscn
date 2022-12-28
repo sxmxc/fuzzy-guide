@@ -214,6 +214,7 @@ visible = false
 [connection signal="back_requested" from="MainTabContainer/DeckBuilder" to="MainTabContainer" method="_on_deck_builder_back_requested"]
 [connection signal="pressed" from="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer/VBoxContainer/HBoxContainer/BackButton" to="MainTabContainer/DeckBuilder" method="_on_back_button_pressed"]
 [connection signal="pressed" from="MainTabContainer/DeckBuilder/TabContainer/DeckList/CenterContainer/VBoxContainer/HBoxContainer/DeckEditButton" to="MainTabContainer/DeckBuilder" method="_on_deck_edit_button_pressed"]
+[connection signal="cancel_requested" from="MainTabContainer/DeckBuilder/TabContainer/DeckBuilder" to="MainTabContainer/DeckBuilder" method="_on_deck_builder_cancel_requested"]
 [connection signal="pressed" from="MainTabContainer/DevMenu/CenterContainer/VBoxContainer/DevSceneButton" to="MainTabContainer" method="_on_dev_scene_button_pressed"]
 [connection signal="pressed" from="MainTabContainer/DevMenu/CenterContainer/VBoxContainer/DevSandboxButton" to="MainTabContainer" method="_on_dev_sandbox_button_pressed"]
 [connection signal="pressed" from="MainTabContainer/DevMenu/CenterContainer/VBoxContainer/DevWorldGenButton" to="MainTabContainer" method="_on_dev_world_gen_button_pressed"]

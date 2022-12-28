@@ -12,7 +12,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if deck_list.get_selected_items().is_empty():
 		get_node("%DeckEditButton").disabled = true
 	else:
@@ -38,4 +38,9 @@ func _on_deck_edit_button_pressed():
 
 func _on_back_button_pressed():
 	emit_signal("back_requested")
+	pass # Replace with function body.
+
+
+func _on_deck_builder_cancel_requested():
+	$TabContainer.current_tab = 0
 	pass # Replace with function body.

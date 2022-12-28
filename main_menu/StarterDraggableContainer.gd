@@ -18,14 +18,14 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
-func _can_drop_data(pos: Vector2, data) -> bool:
+func _can_drop_data(_pos: Vector2, data) -> bool:
 	var can_drop: bool = data is Node and data.is_in_group("Draggable") and data.card_type == starter_unit_type
 	return can_drop
 	
-func _drop_data(pos: Vector2, data) -> void:
+func _drop_data(_pos: Vector2, data) -> void:
 	if item_list is TextureRect:
 		item_list.texture = CardDB.get_card_by_name(data.label).card_image
 		%StarterList.list_contents.append(CardDB.get_card_by_name(data.label).card_id)	

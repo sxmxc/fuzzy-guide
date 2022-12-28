@@ -90,6 +90,19 @@ func _on_remove_old_scene_requested() -> void:
 func _on_set_new_scene_requested(path: String, resource: Resource) -> void:
 	set_new_scene(path, resource)
 
+func get_player_data() -> PlayerData:
+	var data
+	if ResourceLoader.exists(Data.PATH_PLAYER_SAVE):
+		data = ResourceLoader.load(Data.PATH_PLAYER_SAVE)
+	else:
+		data = PlayerData.new()
+		ResourceSaver.save(data,Data.PATH_PLAYER_SAVE)
+	return data
+
+func save_player_data(data: PlayerData):
+	ResourceSaver.save(data, Data.PATH_PLAYER_SAVE)
+	Utils.logger.info("Player data saved", MODULE_NAME)
+	Notifications.add_message("Player data saved")
 
 # Class ----------------------------------
 # Transition Signal for manage scene changes.

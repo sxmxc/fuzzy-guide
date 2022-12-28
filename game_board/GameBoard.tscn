@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://i3geoe2byvlb"]
+[gd_scene load_steps=23 format=3 uid="uid://7tvjq2wfukx7"]
 
 [ext_resource type="Script" path="res://game_board/GameBoard.gd" id="1_n73tf"]
 [ext_resource type="PackedScene" uid="uid://dwylfm45iycpr" path="res://game_board/chess_board/board.tscn" id="2_lr8j4"]
 [ext_resource type="Script" path="res://game_board/fsm/StateMachine.gd" id="2_sge23"]
 [ext_resource type="Script" path="res://game_board/hand/PlayerHand.gd" id="3_2cgno"]
 [ext_resource type="Script" path="res://game_board/fsm/states/PreGameState.gd" id="3_21v2v"]
-[ext_resource type="PackedScene" uid="uid://dughmkepehs7f" path="res://player/player.tscn" id="3_r41uw"]
+[ext_resource type="PackedScene" uid="uid://nxahsunr6tte" path="res://player/player.tscn" id="3_r41uw"]
 [ext_resource type="Script" path="res://game_board/library/PlayerLibrary.gd" id="4_qisnk"]
 [ext_resource type="Script" path="res://game_board/fsm/states/DrawState.gd" id="4_rx2b8"]
 [ext_resource type="Script" path="res://game_board/graveyard/PlayerGraveyard.gd" id="5_afi00"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwourlox4goc6"
-path="res://.godot/imported/jump_hairs_spikey_brown_dark.png-571e74747aa67b895ed226441dc88c63.ctex"
+uid="uid://chrk7g8p5pucm"
+path="res://.godot/imported/anticlockwise-rotation.svg-463eb7ed6ce686473bebe1046006a97f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SmallBurg_village_pack/assets/character/adult/hairs/jump/spikey/jump_hairs_spikey_brown_dark.png"
-dest_files=["res://.godot/imported/jump_hairs_spikey_brown_dark.png-571e74747aa67b895ed226441dc88c63.ctex"]
+source_file="res://assets/anticlockwise-rotation.svg"
+dest_files=["res://.godot/imported/anticlockwise-rotation.svg-463eb7ed6ce686473bebe1046006a97f.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

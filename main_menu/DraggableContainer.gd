@@ -7,11 +7,11 @@ var draggable: PackedScene = preload("res://main_menu/DraggableItem.tscn")
 @onready var item_list = get_child(0).get_child(0)
 
 
-func _can_drop_data(pos: Vector2, data) -> bool:
+func _can_drop_data(_pos: Vector2, data) -> bool:
 	var can_drop: bool = data is Node and data.is_in_group("Draggable")
 	return can_drop
 	
-func _drop_data(pos: Vector2, data) -> void:
+func _drop_data(_pos: Vector2, data) -> void:
 	var draggable_copy: ColorRect = draggable.instantiate()
 	draggable_copy.id = data.id
 	draggable_copy.label = data.label

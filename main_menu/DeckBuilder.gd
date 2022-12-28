@@ -11,12 +11,15 @@ extends Control
 var draggable: PackedScene = preload("res://main_menu/DraggableItem.tscn")
 var player_data : PlayerData
 
+signal cancel_requested
 
 func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("Droppable"):
 		node.connect("item_dropped_on_target", _on_item_dropped_in_list)
 
 func _populate_collection_list(player: PlayerData, deck_name: String):
+	for child in collection_list.get_children():
+		child.queue_free()
 	var id = 0
 	var player_collected = []
 	for card in player.player_collected_cards:
@@ -38,6 +41,7 @@ func _populate_collection_list(player: PlayerData, deck_name: String):
 	pass
 	
 func _populate_starter_list(player: PlayerData, deck_name: String):
+	##TODO need to finish the starter population on deck builder screen
 #	for child in starter_list.get_children():
 #		child.queue_free()
 #	for card in player.player_decks[deck_name].deck_starters:
@@ -68,11 +72,7 @@ func _on_item_dropped_in_list(dropped_item: Draggable) -> void:
 			drag_item.queue_free()
 	update_totals()
 
-func _on_item_hovered(item: Draggable) -> void:
-	print("item hovered received")
-
 func _on_item_clicked(item: Draggable) -> void:
-	print("item click received")
 	%CardDetailsContainer.update_data(CardDB.get_card_by_name(item.label))
 
 func initialize(player: PlayerData, deck_name: String):
@@ -83,7 +83,6 @@ func initialize(player: PlayerData, deck_name: String):
 	deck_name_input.text = deck_name
 	update_totals()
 	for node in get_tree().get_nodes_in_group("Draggable"):
-		node.connect("draggable_hovered", _on_item_hovered)
 		node.connect("draggable_clicked", _on_item_clicked)
 
 func update_totals():
@@ -97,6 +96,9 @@ func _on_save_button_pressed():
 
 
 func _on_cancel_button_pressed():
+	for node in get_tree().get_nodes_in_group("Draggable"):
+		node.queue_free()
+	emit_signal("cancel_requested")
 	pass # Replace with function body.
 
 func _on_confirmation_dialog_confirmed():

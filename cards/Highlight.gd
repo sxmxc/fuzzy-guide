@@ -16,7 +16,7 @@ func descend_color():
 	tween.tween_property(self,"hue", 0, 2)
 	tween.tween_callback(ascend_color)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var current_value = shader_mat.get_shader_parameter("color").v
 	var current_shade = shader_mat.get_shader_parameter("color").s
 	shader_mat.set_shader_parameter("color", Color.from_hsv(hue,current_shade,current_value))

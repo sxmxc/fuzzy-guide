@@ -30,6 +30,7 @@ func get_files_recursive(path: String, regex: RegEx = null) -> Array:
 	var files = []
 	var dir = DirAccess.open(path)
 	if dir:
+		dir.list_dir_begin()
 		var file := dir.get_next()
 		while file != "":
 			if dir.current_is_dir():
@@ -75,3 +76,4 @@ func array_dif(arr1 : Array, arr2 : Array) -> Array:
 				only_in_arr1.remove_at(v)
 				break
 	return only_in_arr1
+
