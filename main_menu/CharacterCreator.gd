@@ -5,6 +5,7 @@ const MODULE_NAME = "CharacterCreator"
 signal back_requested
 
 
+@export var dialogue_ballon := preload("res://dialogue/DefaultDialogueBalloon.tscn")
 
 @onready var body_options := %BodyOptions as OptionButton
 @onready var hair_options := %HairOptions as OptionButton
@@ -28,6 +29,9 @@ var available_tops := []
 var available_bottoms := []
 var available_shoes := []
 var available_accessories := []
+
+var dialogue_displayed := false
+var _dev_unlocked := false
 
 var animation_path_dict = {
 	"idle" : "idle", 
@@ -72,10 +76,9 @@ func _ready():
 	_randomize_all()
 
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	%SaveButton.visible = _dev_unlocked
 	char_body_sprite.texture = _current_body.animations.idle
 	char_hair_sprite.texture = _current_hair.animations.idle
 	char_top_sprite.texture = _current_top.animations.idle
@@ -114,6 +117,17 @@ func _update_options_lists():
 	for accessory in available_accessories:
 		accessory_options.add_item(accessory)
 
+func set_char_name(string : String):
+	%PlayerNameLabel.text = string
+
+func unlock_dev():
+	_dev_unlocked = true
+
+func lock_dev():
+	_dev_unlocked = false
+
+func begin_game():
+	Game.change_scene("res://world/world.tscn", false, Data.TRANSITION_IMAGE_PATH)
 
 func _on_body_options_item_selected(index):
 	_current_body = Data.SPRITE_DICT[body_options.get_item_text(index)]
@@ -245,6 +259,19 @@ func _on_char_view_rotate_right_pressed():
 
 
 func _on_save_button_pressed():
+	save_player()
+	pass # Replace with function body.
+
+
+func _on_visibility_changed():
+	if visible:
+		var dialogue = dialogue_ballon.instantiate()
+		add_child(dialogue)
+		dialogue.start(load("res://dialogue/character_creation.dialogue"), "Character Creation Intro", [self, DialogueState])
+		dialogue_displayed = true
+	pass # Replace with function body.
+
+func save_player():
 	var player_data = Game.get_player_data() as PlayerData
 	player_data.player_current_body_sprite = body_options.get_item_text(body_options.get_selected_id())
 	player_data.player_current_hair_sprite = hair_options.get_item_text(hair_options.get_selected_id())
@@ -253,4 +280,11 @@ func _on_save_button_pressed():
 	player_data.player_current_shoes_sprite = shoes_options.get_item_text(shoes_options.get_selected_id())
 	player_data.player_current_accessory_sprite = accessory_options.get_item_text(accessory_options.get_selected_id())
 	Game.save_player_data(player_data)
+
+
+func _on_accept_button_pressed():
+	var dialogue = dialogue_ballon.instantiate()
+	add_child(dialogue)
+	dialogue.start(load("res://dialogue/character_creation.dialogue"), "Character Creation Intro", [self, DialogueState])
+	dialogue_displayed = true
 	pass # Replace with function body.

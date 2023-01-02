@@ -3,7 +3,6 @@ class_name Player
 const MODULE_NAME = "Player"
 
 @export var _data: PlayerData
-@export var _save_file: String = Data.PATH_PLAYER_SAVE
 
 
 @onready var _player_character = get_node("CharacterPlayer")
@@ -21,13 +20,6 @@ func _ready():
 	EventBus.buses["PlayerEvents"].deck_deleted.connect(_on_deck_deleted)
 	if !_data:
 		_data = Game.get_player_data()
-	##TODO delete if no issue
-#	if !_data:
-#		if ResourceLoader.exists(_save_file):
-#			_data = ResourceLoader.load(_save_file)
-#		else:
-#			_data = PlayerData.new()
-#			ResourceSaver.save(_data,_save_file)
 	_player_menu.set_player_menu_data(_data)
 
 
@@ -52,14 +44,6 @@ func save_player_data():
 	if !_data:
 		_data=Game.get_player_data()
 	Game.save_player_data(_data)
-	##TODO remove if no issues
-#	if !_data:
-#		if ResourceLoader.exists(_save_file):
-#			_data = ResourceLoader.load(_save_file)
-#		else:
-#			_data = PlayerData.new()
-#	ResourceSaver.save(_data,_save_file)
-
 
 
 func open_menu():

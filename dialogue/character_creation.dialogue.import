@@ -1,0 +1,14 @@
+[remap]
+
+importer="dialogue_manager_compiler_4"
+type="Resource"
+uid="uid://y8s3243tkkn"
+path="res://.godot/imported/character_creation.dialogue-f8b3a9201317496303fcbad083d564df.tres"
+
+[deps]
+
+source_file="res://dialogue/character_creation.dialogue"
+dest_files=["res://.godot/imported/character_creation.dialogue-f8b3a9201317496303fcbad083d564df.tres"]
+
+[params]
+

@@ -49,6 +49,24 @@ const MOTD_LIST := [
 	"Clothes make the man. Naked people have little or no influence in society.\n[b]- Mark Twain[/b]",
 	"I’m not superstitious, but I am a little stitious.\n[b]- Michael Scott[/b]",
 	]
+
+const LOAD_SCREEN_IMAGES := [
+	preload("res://core/images/transitions/10beaf07-4453-4706-bcc0-1cf6bc6d6e01.jpg"),
+	preload("res://core/images/transitions/000175.1097673250.gfpgan.png"),
+	preload("res://core/images/transitions/000174.775517731.png"),
+	preload("res://core/images/transitions/000175.1097673250.gfpgan.png"),
+	preload("res://core/images/transitions/000176.556678169.png"),
+	preload("res://core/images/transitions/000178.1819809780.png"),
+	preload("res://core/images/transitions/000191.1756847785.png"),
+	preload("res://core/images/transitions/000193.2045306087.png"),
+	preload("res://core/images/transitions/000210.1871755508.png"),
+	preload("res://core/images/transitions/000212.1092408422.png"),
+	preload("res://core/images/transitions/000221.1729325855.png"),
+	preload("res://core/images/transitions/000254.1949674504.png"),
+	preload("res://core/images/transitions/000254.1949674504.png")
+	]
+
+const LOAD_SCREEN_HINTS := []
 	
 
 const CARD_TEMPLATE := preload("res://cards/card.tscn")

@@ -10,11 +10,15 @@ const MODULE_NAME = "Game"
 
 var current_scene : Node = null
 
-
 # Entrypoint -----------------------------
 func _ready() -> void:
 	# Update viewport_size when viewport is being resized.()
 	get_viewport().size_changed.connect(_on_viewport_size_changed)
+#	await get_tree().root.ready
+#	if current_scene != get_tree().current_scene:
+#		current_scene = get_tree().current_scene
+#		get_tree().root.remove_child(get_tree().current_scene)
+#		add_child(get_tree().current_scene)
 	pass
 
 
@@ -103,7 +107,10 @@ func save_player_data(data: PlayerData):
 	ResourceSaver.save(data, Data.PATH_PLAYER_SAVE)
 	Utils.logger.info("Player data saved", MODULE_NAME)
 	Notifications.add_message("Player data saved")
+	
 
+func get_random_loadscreen_image() -> Texture2D:
+	return Data.LOAD_SCREEN_IMAGES[randi_range(0, Data.LOAD_SCREEN_IMAGES.size() - 1)]
 # Class ----------------------------------
 # Transition Signal for manage scene changes.
 class Transignal:

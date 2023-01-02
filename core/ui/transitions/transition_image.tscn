@@ -220,7 +220,8 @@ offset_bottom = -79.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="Controls/VBoxProgress"]
+[node name="ProgressLabel" type="Label" parent="Controls/VBoxProgress"]
+unique_name_in_owner = true
 offset_right = 400.0
 offset_bottom = 47.0
 text = "Loading"
@@ -269,6 +270,17 @@ text = "Never turn your back on a goose. "
 label_settings = SubResource("LabelSettings_1fa1g")
 horizontal_alignment = 2
 autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="Controls"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.876562
+anchor_top = 0.620833
+anchor_right = 0.936719
+anchor_bottom = 0.665278
+offset_top = -3.05176e-05
+text = "Continue"
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

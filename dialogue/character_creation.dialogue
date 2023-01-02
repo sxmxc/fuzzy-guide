@@ -1,0 +1,52 @@
+~ character_creation_intro
+if has_played_char_intro == false
+	{{voice_in_head}}: [[Hi|Hello|Howdy]] stranger. Haven't seen you around here before.
+	{{voice_in_head}}: First of all... 
+	=>< character_creation_name_input
+	set has_played_char_intro = true
+	{{voice_in_head}}: Now forgive me, but I am a little blind and hard of hearing. Did you say your name was [b][i]{{player_name}}[/i][/b], and do you look like above?
+	- No
+		=> character_edit_options
+	- Yes
+		=> character_accept
+else
+	{{voice_in_head}}: Well I've already given you my intro spill. Would you like to hear it again?
+	- No
+		=> character_accept
+	- Yes
+		set has_played_char_intro = false
+		=> character_creation_intro
+
+~ character_creation_name_input
+{{voice_in_head}}: Go ahead and tell me your name. 
+do get_dialogue_text_input()
+do set_char_name(player_name)
+if player_name == "Dev"
+	{{voice_in_head}}: Oh. Sorry. I didn't realize who you were. I will leave you alone.
+	do unlock_dev()
+	=> END!
+{{voice_in_head}}: [[Hi|Hello|Howdy]] {{player_name}}! I am {{voice_in_head}}
+=> END
+
+~ character_accept
+{{voice_in_head}}: Well then. Shall we begin? 
+- No
+	=> character_edit_options
+- Yes
+	do save_player()
+	do begin_game()
+	=> END!
+
+~ character_edit_options
+{{voice_in_head}}: What do you want to change?
+- Name
+	{{voice_in_head}}: Ok.
+	=>< character_creation_name_input
+	=> character_edit_options
+- How I look
+	{{voice_in_head}}: Ok. Click [i]ACCEPT[/i] when you are done. 
+- Everything
+	=>< character_creation_name_input
+	=> END!
+- Nevermind
+	=> character_accept

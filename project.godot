@@ -34,6 +34,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://cards/card_data.gd"
 }, {
+"base": "TileMap",
+"class": &"Chunk",
+"language": &"GDScript",
+"path": "res://world/Chunk.gd"
+}, {
+"base": "Resource",
+"class": &"DialogueResource",
+"language": &"GDScript",
+"path": "res://addons/dialogue_manager/dialogue_resource.gd"
+}, {
 "base": "ColorRect",
 "class": &"Draggable",
 "language": &"GDScript",
@@ -130,6 +140,8 @@ _global_script_class_icons={
 "Card": "",
 "CardContainer": "",
 "CardData": "",
+"Chunk": "res://assets/cube.svg",
+"DialogueResource": "res://addons/dialogue_manager/assets/icon.svg",
 "Draggable": "",
 "DraggableContainer": "",
 "Events": "",
@@ -172,10 +184,18 @@ CardDB="*res://cards/card_db.tscn"
 Data="*res://core/singletons/data.gd"
 Notifications="*res://notifications/Notifications.tscn"
 Game="*res://core/singletons/game.gd"
+DialogueState="*res://dialogue/DialogueState.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+TaskQueue="*res://core/TaskQueue.gd"
 
 [category]
 
 property_name=1
+
+[dialogue_manager]
+
+states=["DialogueState"]
+wrap_lines=true
 
 [display]
 
@@ -185,7 +205,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dice_syntax/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dice_syntax/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
 [gui]
 
@@ -218,3 +238,7 @@ camera_zoom_out={
 
 driver/threads/thread_model=2
 threads/thread_model=2
+
+[threading]
+
+worker_pool/max_threads=5

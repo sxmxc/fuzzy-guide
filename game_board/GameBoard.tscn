@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://game_board/fsm/StateMachine.gd" id="2_sge23"]
 [ext_resource type="Script" path="res://game_board/hand/PlayerHand.gd" id="3_2cgno"]
 [ext_resource type="Script" path="res://game_board/fsm/states/PreGameState.gd" id="3_21v2v"]
-[ext_resource type="PackedScene" uid="uid://nxahsunr6tte" path="res://player/player.tscn" id="3_r41uw"]
+[ext_resource type="PackedScene" uid="uid://nxahsunr6tte" path="res://player/Player.tscn" id="3_r41uw"]
 [ext_resource type="Script" path="res://game_board/library/PlayerLibrary.gd" id="4_qisnk"]
 [ext_resource type="Script" path="res://game_board/fsm/states/DrawState.gd" id="4_rx2b8"]
 [ext_resource type="Script" path="res://game_board/graveyard/PlayerGraveyard.gd" id="5_afi00"]

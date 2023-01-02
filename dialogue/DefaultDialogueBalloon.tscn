@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnx5278tapg1"]
+
+[ext_resource type="Script" path="res://dialogue/DefaultDialogueBalloon.gd" id="1_6bbsi"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_y3d00"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5puj"]
+content_margin_left = 40.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(1, 1, 1, 0.25098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2iwt"]
+content_margin_left = 40.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+draw_center = false
+
+[node name="DefaultDialogueBalloon" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_6bbsi")
+
+[node name="Balloon" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -84.0
+offset_right = 147.5
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Margin" type="MarginContainer" parent="Balloon"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 119.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+metadata/_edit_layout_mode = 1
+
+[node name="VBox" type="VBoxContainer" parent="Balloon/Margin"]
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 275.0
+offset_bottom = 122.0
+theme_override_constants/separation = 10
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Margin/VBox"]
+modulate = Color(1, 1, 1, 0.501961)
+offset_right = 255.0
+offset_bottom = 24.0
+mouse_filter = 1
+bbcode_enabled = true
+text = "Character"
+fit_content_height = true
+scroll_active = false
+
+[node name="DialogueLabel" parent="Balloon/Margin/VBox" instance=ExtResource("2_y3d00")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 34.0
+offset_right = 255.0
+offset_bottom = 58.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Dialogue"
+
+[node name="Responses" type="VBoxContainer" parent="Balloon/Margin/VBox"]
+offset_top = 68.0
+offset_right = 255.0
+offset_bottom = 68.0
+theme_override_constants/separation = 2
+
+[node name="ResponseTemplate" type="RichTextLabel" parent="Balloon/Margin/VBox"]
+unique_name_in_owner = true
+offset_top = 78.0
+offset_right = 255.0
+offset_bottom = 112.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_y5puj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a2iwt")
+bbcode_enabled = true
+text = "Response"
+fit_content_height = true
+scroll_active = false
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="resized" from="Balloon/Margin" to="." method="_on_margin_resized"]

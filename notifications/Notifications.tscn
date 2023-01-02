@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ddo8ntyw6v3wm" path="res://notifications/notification_alerts/notification_alerts.tscn" id="3_tkwuf"]
 
 [node name="Notifications" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_ei5t7")
 
 [node name="NotificationLogger" parent="." instance=ExtResource("2_tfreo")]

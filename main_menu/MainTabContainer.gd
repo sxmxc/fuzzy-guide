@@ -55,7 +55,7 @@ func _on_dev_scene_button_pressed():
 
 
 func _on_dev_sandbox_button_pressed():
-	Game.change_scene("res://game_board/GameBoard.tscn", true, Data.TRANSITION_IMAGE_PATH)
+	Game.change_scene("res://game_board/GameBoard.tscn", false, Data.TRANSITION_IMAGE_PATH)
 	pass # Replace with function body.
 
 func load_data(data: PlayerData):
@@ -63,7 +63,7 @@ func load_data(data: PlayerData):
 
 
 func _on_dev_world_gen_button_pressed():
-	Game.change_scene("res://world/world.tscn", true, Data.TRANSITION_IMAGE_PATH)
+	Game.change_scene("res://world/world.tscn", false, Data.TRANSITION_IMAGE_PATH)
 	pass # Replace with function body.
 
 

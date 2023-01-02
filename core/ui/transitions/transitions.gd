@@ -10,8 +10,14 @@ var transignal = Game.Transignal.new()
 var _target_path : String = ""
 var _target_resource : Resource = null
 
+@onready var load_texture := $Controls/TextureRect as TextureRect
+@onready var continue_button := %ContinueButton as Button
+
 # Entrypoint -----------------------------
 func _ready() -> void:
+	%ProgressLabel.text = "Loading"
+	continue_button.visible = false
+	load_texture.set_texture(Game.get_random_loadscreen_image())
 	Utils.logger.ready(MODULE_NAME)
 	%AnimationPlayer.play("intro")
 	pass
@@ -28,8 +34,11 @@ func _on_loader_updated(_path: String, progress: float) -> void:
 
 # Call down from Game.
 func _on_loader_completed(path: String, resource: Resource) -> void:
+	%ProgressLabel.text = "Done"
 	_target_path = path
 	_target_resource = resource
+	continue_button.visible = true
+	await continue_button.pressed
 	%AnimationPlayer.queue("outro")
 	pass
 
@@ -46,3 +55,4 @@ func set_new_scene() -> void:
 	transignal.set_new_scene_requested.emit(_target_path, _target_resource)
 	move_to_front()
 	pass
+
